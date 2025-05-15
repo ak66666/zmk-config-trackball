@@ -1,0 +1,9 @@
+if SHIELD_THUMBSUPV9cir
+
+config ZMK_KEYBOARD_NAME
+    default "ThumbsUpV9cir"
+ 
+config I2C
+	default y
+
+endif 

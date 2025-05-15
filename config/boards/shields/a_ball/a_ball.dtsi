@@ -1,0 +1,29 @@
+&i2c0 {
+    status = "disabled";
+    glidepoint: glidepoint@2a {
+        compatible = "cirque,pinnacle";
+        reg = <0x2a>;
+        status = "disabled";
+//        dr-gpios = <&pro_micro 1 (GPIO_ACTIVE_HIGH)>;
+	// AK: Used 107 in the middle of Nice!Nano since no free ProMicro pins are left in the key matrix. 
+	dr-gpios = <&gpio1 7 GPIO_ACTIVE_HIGH>;
+
+        sensitivity = "1x";
+        sleep;
+        //no-taps;
+    };
+};
+
+
+/ {
+	/* assign `input-listener` to all pointing devices */
+    tpad_central_listener {
+        compatible = "zmk,input-listener";
+        device = <&glidepoint>;
+        xy-swap;
+        y-invert;
+        x-invert;
+        scale-multiplier = <1>;
+	};
+
+};
