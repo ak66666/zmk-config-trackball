@@ -1,2 +1,2 @@
-config SHIELD_THUMBSUPV9cir
-    def_bool $(shields_list_contains,thumbsupv9cir)
+config SHIELD_a_ball
+    def_bool $(shields_list_contains,a_ball)

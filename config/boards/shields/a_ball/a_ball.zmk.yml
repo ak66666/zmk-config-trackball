@@ -1,8 +1,8 @@
 file_format: "1"
-id: thumbsupv9cir
-name: ThumbsUpV9cir
+id: a_ball
+name: a_ball
 type: shield
-url: https://github.com/ak66666/ThumbsUpUnsplitV9
+url: https://github.com/ak66666/ThumbsUp-Trackball
 requires: [pro_micro]
 features:
   - keys
