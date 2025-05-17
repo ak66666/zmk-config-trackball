@@ -13,10 +13,9 @@
 #
 ---
 include:
-#  - board: nice_nano_v2
-#    shield: thumbsupv5
-#  - board: nice_nano_v2
-#    shield: thumbsupv9 
   - board: nice_nano_v2
-    shield: a_ball
-
+    shield: tracktyl_left
+  - board: nice_nano_v2
+    shield: tracktyl_right
+  - board: nice_nano_v2
+    shield: settings_reset
