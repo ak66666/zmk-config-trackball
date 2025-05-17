@@ -32,7 +32,7 @@
 
         default_layer {
             bindings = <
-		&mkp RCLK  &mkp MCLK  &mkp LCLK 
+                &mkp RCLK  &mkp MCLK  &mkp LCLK
             >;
         };
     };
