@@ -1,18 +1,10 @@
 manifest:
   remotes:
     - name: zmkfirmware
-      url-base: https://github.com/petejohanson
-    - name: inorichi
-      url-base: https://github.com/inorichi
-    - name: trentrand
-      url-base: https://github.com/trentrand
+      url-base: https://github.com/zmkfirmware
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: feat/pointers-move-scroll
       import: app/west.yml
-    - name: zmk-pmw3360-driver
-      remote: trentrand
-      revision: main
-  self:
+   self:
     path: config
