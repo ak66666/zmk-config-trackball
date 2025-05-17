@@ -1,0 +1,54 @@
+#include <dt-bindings/zmk/matrix_transform.h>
+#include "a_ball.dtsi"
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+	zmk,matrix_transform = &default_transform;
+    };
+
+    default_transform: keymap_transform_0 {
+        compatible = "zmk,matrix-transform";
+        columns = <3>;
+        rows = <1>;
+        map = <
+		RC(0,0) RC(0,1) RC(0,2) 
+        >;
+    };
+
+    kscan0: kscan_0 {
+        compatible = "zmk,kscan-gpio-matrix";
+        label = "KSCAN";
+        diode-direction = "col2row";
+
+        col-gpios
+            = <&pro_micro 9 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 8 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 7 GPIO_ACTIVE_HIGH>
+            ;
+
+        row-gpios
+            = <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            ;
+    };
+
+};
+
+
+
+&pro_micro_spi {
+    status = "okay";
+
+    miso-pin = <17>; // P0.17
+    mosi-pin = <20>; // P0.20
+    sck-pin = <22>; // P0.22
+    cs-gpios = <&gpio0 24 GPIO_ACTIVE_LOW>; // P0.24
+
+    trackball: trackball@0 {
+        compatible = "pixart,pmw3360";
+        reg = <0>;
+        label = "Pixart PMW3360";
+        irq-gpios = <&gpio1 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        spi-max-frequency = <2000000>;
+        scroll-layer = <5>;
+    };
+};

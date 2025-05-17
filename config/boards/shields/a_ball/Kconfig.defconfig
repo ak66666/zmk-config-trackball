@@ -3,7 +3,4 @@ if SHIELD_a_ball
 config ZMK_KEYBOARD_NAME
     default "a_ball"
  
-config I2C
-	default y
-
 endif 
