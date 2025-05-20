@@ -1,11 +1,9 @@
 manifest:
   remotes:
     - name: zmkfirmware
-#      url-base: https://github.com/zmkfirmware
-      url-base: https://github.com/trentrand
-    - name: badjeff
-#      url-base: https://github.com/badjeff
-      url-base: https://github.com/trentrand
+      url-base: https://github.com/zmkfirmware
+    - name: george-norton
+      url-base: https://github.com/george-norton
     # Additional modules containing boards/shields/custom code can be listed here as well
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
@@ -13,9 +11,8 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-#    - name: zmk-pmw3610-driver
-    - name: zmk-pmw3360-driver
-      remote: badjeff
+    - name: pmw3360-zephyr-module
+      remote: george-norton
       revision: main
   self:
     path: config
