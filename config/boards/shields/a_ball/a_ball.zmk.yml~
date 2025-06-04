@@ -5,4 +5,5 @@ type: shield
 url: https://github.com/ak66666/ThumbsUp-Trackball
 requires: [pro_micro]
 features:
+  - keys
   - pointer
