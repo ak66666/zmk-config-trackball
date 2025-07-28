@@ -17,25 +17,45 @@
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 15    // default: 10
 //#include <dt-bindings/zmk/pointing.h>
 
-/*
-&glidepoint_listener {
-    scroller {
-        layers = <DEFAULT>;
-        input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_scaler 1 5>;
-    };
-};
-*/
+// #define LEFT_HAND     	0
+// #define RIGHT_HAND     	1
+// #define LEFT_HAND_SCROLL	2
+// #define RIGHT_HAND_SCROLL	3
 
 / {
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        LEFT_HAND {
             bindings = <
-                &kp Q            &kp W        &kp E
-		&bt BT_SEL 0 	 &bt BT_CLR   &none
+                &kp Q            &kp W        &mo 2
+		&bt BT_SEL 0 	 &bt BT_CLR   &mo 1
             >;
         };
+
+	// Right hand layer swaps the left and right buttons, and indicates to trakball_listener that it should swap X and Y axis (from those set by default.)
+        RIGHT_HAND {
+            bindings = <
+                &kp W            &kp Q        &mo 3
+		&bt BT_SEL 0 	 &bt BT_CLR   &trans
+            >;
+        };
+	
+	// Scroll layers do nothing by themselves, but indicate to trackball_listener that it should apply the appropriate transformation, i.e. switch to scrolling instead of pointing.
+        LEFT_HAND_SCROLL {
+            bindings = <
+		&trans	&trans	&trans
+		&trans	&trans	&trans
+            >;
+        };
+
+        RIGHT_HAND {
+            bindings = <
+		&trans	&trans	&trans
+		&trans	&trans	&trans
+            >;
+        };
+
     };
 
 };
