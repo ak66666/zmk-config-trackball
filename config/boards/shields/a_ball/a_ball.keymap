@@ -49,7 +49,7 @@
             >;
         };
 
-        RIGHT_HAND {
+        RIGHT_HAND_SCROLL {
             bindings = <
 		&trans	&trans	&trans
 		&trans	&trans	&trans
