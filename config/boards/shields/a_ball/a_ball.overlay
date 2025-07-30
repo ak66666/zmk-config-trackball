@@ -118,7 +118,7 @@
 //            &zip_xy_to_scroll_mapper                         // Converts XY movement to scroll events
 //							     // Leave the scroll direction as-is
 //            &zip_scroll_transform (INPUT_TRANSFORM_Y_INVERT) // Inverts the scroll direction
-/        >;
+//        >;
 //    };
 
     /* layer-4 right scroll override */
