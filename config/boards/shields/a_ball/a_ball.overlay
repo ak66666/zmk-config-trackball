@@ -93,19 +93,17 @@
     /* input-processors = <&zip_xy_scaler 5 5>; */
 
     /* layer-0 left left hand pointer */
-    /* This default layer should not have any additional transformations. */
-//    left_hand_pointer: left_hand_pointer {
-//        layers           = <0>;
-//        input-processors = <
-//	    //&zip_xy_swap_mapper
-//        >;
-//    };
+    /* This default layer should not have any additional transformations. 
+       All other layers will add to it, and then have all those extra steps removed
+       when returned to the base layer.
+    */
 
     /* layer-1 right hand pointer */
     right_hand_pointer: right_hand_pointer {
         layers           = <1>;
         input-processors = <
             &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction
+            &zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction
         >;
     };
 
@@ -119,16 +117,16 @@
     };
 
     /* layer-3 right scroll override */
-    right_hand_scroller: right_hand_scroller {
-        layers           = <3>;
-        input-processors = <
-            &zip_xy_scaler 1 15                              // Scales the scroll speed
-            &zip_xy_to_scroll_mapper                         // Converts XY movement to scroll events
-            &zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction
-        >;
-    };
+//    right_hand_scroller: right_hand_scroller {
+//        layers           = <3>;
+//        input-processors = <
+//            &zip_xy_scaler 1 15                              // Scales the scroll speed
+//            &zip_xy_to_scroll_mapper                         // Converts XY movement to scroll events
+//            &zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction
+//        >;
+//    };
 
 
 
   };
-};
+}; 

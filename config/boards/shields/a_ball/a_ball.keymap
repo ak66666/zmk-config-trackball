@@ -19,8 +19,8 @@
 
 // #define LEFT_HAND     	0
 // #define RIGHT_HAND     	1
-// #define LEFT_HAND_SCROLL	2
-// #define RIGHT_HAND_SCROLL	3
+// #define EITHER_HAND_SCROLL	2
+// xxxxx #define RIGHT_HAND_SCROLL	3
 
 / {
     keymap {
@@ -36,25 +36,25 @@
 	// Right hand layer swaps the left and right buttons, and indicates to trakball_listener that it should swap X and Y axis (from those set by default.)
         RIGHT_HAND {
             bindings = <
-                &kp W            &kp Q        &mo 3
+                &kp W            &kp Q        &mo 2
 		&bt BT_SEL 0 	 &bt BT_CLR   &trans
             >;
         };
 	
 	// Scroll layers do nothing by themselves, but indicate to trackball_listener that it should apply the appropriate transformation, i.e. switch to scrolling instead of pointing.
-        LEFT_HAND_SCROLL {
+        EITHER_HAND_SCROLL {
             bindings = <
 		&trans	&trans	&trans
 		&trans	&trans	&trans
             >;
         };
 
-        RIGHT_HAND_SCROLL {
-            bindings = <
-		&trans	&trans	&trans
-		&trans	&trans	&trans
-            >;
-        };
+//        RIGHT_HAND_SCROLL {
+//            bindings = <
+//		&trans	&trans	&trans
+//		&trans	&trans	&trans
+//            >;
+//        };
 
     };
 
