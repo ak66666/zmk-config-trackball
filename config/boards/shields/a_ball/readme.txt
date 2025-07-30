@@ -11,3 +11,11 @@ The scrolling works for the left-hand configuration only.
 I suspect that's because of the way I switch between the layers - and it never goes to the level 3 (right hand scrolling.)
 I will remove that separate right hand scrolling layer, and leave a single scrolling layer.
 The XY swap will be done in layer 2 for both scrolling and pointing.
+
+20250730 1911
+
+Started laying out the keys.
+I have 9 pins available for direct control - on the left side of PriMicro, 1..9.
+That leaves 0 for the ball irq and two ground pins.
+
+
