@@ -93,12 +93,12 @@
     /* input-processors = <&zip_xy_scaler 5 5>; */
 
     /* layer-1 left hand pointer */
-    left_hand_pointer: left_hand_pointer {
-        layers           = <0>;
-         input-processors = <
-            &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP) // Inverts the pointer direction for the default layer
-         >;
-    };
+//    left_hand_pointer: left_hand_pointer {
+//        layers           = <0>;
+//         input-processors = <
+//            &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP) // Inverts the pointer direction for the default layer
+//         >;
+//    };
 
     /* layer-2 right hand pointer */
     right_hand_pointer: right_hand_pointer {
