@@ -93,43 +93,44 @@
     /* input-processors = <&zip_xy_scaler 5 5>; */
 
     /* layer-1 left hand pointer */
-    left_hand_pointer: left_hand_pointer {
-        layers           = <0>;
+//    left_hand_pointer: left_hand_pointer {
+//        layers           = <0>;
 	// No transformations for the default hand/layer.
         // input-processors = <
         //    &zip_xy_transform (INPUT_TRANSFORM_Y_INVERT) // Inverts the scroll direction
         // >;
-    };
+//    };
 
     /* layer-2 right hand pointer */
     right_hand_pointer: right_hand_pointer {
         layers           = <1>;
         input-processors = <
-            &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP) // Inverts the pointer direction
+//            &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP) // Inverts the pointer direction
+            &zip_xy_transform (INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction
         >;
     };
 
     /* layer-3 left hand scroll override */
-    left_hand_scroller: left_hand_scroller {
-        layers           = <2>;
-        input-processors = <
-            &zip_xy_scaler 1 15                              // Scales the scroll speed
-            &zip_xy_to_scroll_mapper                         // Converts XY movement to scroll events
-							     // Leave the scroll direction as-is
-            &zip_scroll_transform (INPUT_TRANSFORM_Y_INVERT) // Inverts the scroll direction
-        >;
-    };
+//    left_hand_scroller: left_hand_scroller {
+//        layers           = <2>;
+//        input-processors = <
+//            &zip_xy_scaler 1 15                              // Scales the scroll speed
+//            &zip_xy_to_scroll_mapper                         // Converts XY movement to scroll events
+//							     // Leave the scroll direction as-is
+//            &zip_scroll_transform (INPUT_TRANSFORM_Y_INVERT) // Inverts the scroll direction
+/        >;
+//    };
 
     /* layer-4 right scroll override */
-    right_hand_scroller: right_hand_scroller {
-        layers           = <3>;
-        input-processors = <
-            &zip_xy_scaler 1 15                              // Scales the scroll speed
-            &zip_xy_to_scroll_mapper                         // Converts XY movement to scroll events
-            &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP) // Inverts the pointer direction
-            &zip_scroll_transform (INPUT_TRANSFORM_Y_INVERT) // Inverts the scroll direction
-        >;
-    };
+//    right_hand_scroller: right_hand_scroller {
+//        layers           = <3>;
+//        input-processors = <
+//            &zip_xy_scaler 1 15                              // Scales the scroll speed
+//            &zip_xy_to_scroll_mapper                         // Converts XY movement to scroll events
+//            &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP) // Inverts the pointer direction
+//            &zip_scroll_transform (INPUT_TRANSFORM_Y_INVERT) // Inverts the scroll direction
+//        >;
+//    };
 
 
 
