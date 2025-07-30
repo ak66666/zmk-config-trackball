@@ -93,19 +93,18 @@
     /* input-processors = <&zip_xy_scaler 5 5>; */
 
     /* layer-1 left hand pointer */
-//    left_hand_pointer: left_hand_pointer {
-//        layers           = <0>;
-	// No transformations for the default hand/layer.
-        // input-processors = <
-        //    &zip_xy_transform (INPUT_TRANSFORM_Y_INVERT) // Inverts the scroll direction
-        // >;
-//    };
+    left_hand_pointer: left_hand_pointer {
+        layers           = <0>;
+         input-processors = <
+            &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP) // Inverts the pointer direction
+         >;
+    };
 
     /* layer-2 right hand pointer */
     right_hand_pointer: right_hand_pointer {
         layers           = <1>;
         input-processors = <
-//            &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP) // Inverts the pointer direction
+            &zip_xy_transform (INPUT_TRANSFORM_XY_SWAP) // Inverts the pointer direction
             &zip_xy_transform (INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction
         >;
     };
