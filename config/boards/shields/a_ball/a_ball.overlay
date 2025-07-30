@@ -96,7 +96,7 @@
     left_hand_pointer: left_hand_pointer {
         layers           = <0>;
         input-processors = <
-	    &zip_xy_swap_mapper
+	    //&zip_xy_swap_mapper
             &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction
         >;
     };
@@ -104,9 +104,9 @@
     /* layer-1 right hand pointer */
     right_hand_pointer: right_hand_pointer {
         layers           = <1>;
-        input-processors = <
-	    &zip_xy_swap_mapper
-        >;
+//        input-processors = <
+// 	    &zip_xy_swap_mapper
+//        >;
     };
 
     /* layer-2 left hand scroll override */
