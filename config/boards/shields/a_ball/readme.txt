@@ -18,4 +18,6 @@ Started laying out the keys.
 I have 9 pins available for direct control - on the left side of PriMicro, 1..9.
 That leaves 0 for the ball irq and two ground pins.
 
-
+I seem to be unable to move to a layer after the next one - in the trackball listener code.
+It is simply ignored, even the laye is selected - I confirmed it by placind specific letter on those layers.
+ 
