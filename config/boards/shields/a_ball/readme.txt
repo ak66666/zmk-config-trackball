@@ -21,3 +21,13 @@ That leaves 0 for the ball irq and two ground pins.
 I seem to be unable to move to a layer after the next one - in the trackball listener code.
 It is simply ignored, even the laye is selected - I confirmed it by placind specific letter on those layers.
  
+20250731 1414
+
+Made the scrolling work - the missing ingridient was "process-next" command in the input processor.
+Without that command the first layer-filtered segment was running but not going to the next layers, if any.
+That is the right-hand layer #1 was activated, its block swapped the navigation direction from the default left-handed.
+When the scrolling layer #3 was activated - it was not reached without "process-next" in the block for layer 1.
+
+I think I can remove the extra layer, just keep the common shared scrolling layer now.
+Its sole purpose is to turn the scrolling on, no key modifications.
+

@@ -19,8 +19,7 @@
 
 // #define LEFT_HAND     	0
 // #define RIGHT_HAND     	1
-// #define LEFT_HAND_SCROLL	2
-// #define RIGHT_HAND_SCROLL	3
+// #define EITHER_HAND_SCROLL	2
 
 / {
     keymap {
@@ -45,7 +44,7 @@
         };
 	
 	// Scroll layers do nothing by themselves, but indicate to trackball_listener that it should apply the appropriate transformation, i.e. switch to scrolling instead of pointing.
-        LEFT_HAND_SCROLL {
+        EITHER_HAND_SCROLL {
             bindings = <
 		&trans	&trans	&trans
 		&trans	&trans	&trans
@@ -53,13 +52,6 @@
             >;
         };
 
-        RIGHT_HAND_SCROLL {
-            bindings = <
-		&trans	&trans	&trans
-		&trans	&trans	&trans
-		&trans	&trans	&kp X
-            >;
-        };
 
     };
 

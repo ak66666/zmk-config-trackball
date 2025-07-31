@@ -104,27 +104,17 @@
         layers           = <1>;
         input-processors = <
             &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction
-//            &zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction
+            &zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction
         >;
 	process-next; // To process the scroller layer, if/when it is activated. Without this command the processing would stop here.
     };
 
-    /* layer-2 left hand scroll override */
-    left_hand_scroller: left_hand_scroller {
+    /* layer-2 both hand scroll override */
+    either_hand_scroller: either_hand_scroller {
         layers           = <2>;
         input-processors = <
             &zip_xy_scaler 1 15                              // Scales the scroll speed
             &zip_xy_to_scroll_mapper                         // Converts XY movement to scroll events
-        >;
-    };
-
-    /* layer-3 right scroll override */
-    right_hand_scroller: right_hand_scroller {
-        layers           = <3>;
-        input-processors = <
-            &zip_xy_scaler 1 15                              // Scales the scroll speed
-            &zip_xy_to_scroll_mapper                         // Converts XY movement to scroll events
-            &zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction
         >;
     };
 
