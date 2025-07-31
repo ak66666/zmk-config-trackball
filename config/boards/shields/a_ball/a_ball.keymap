@@ -38,7 +38,7 @@
             bindings = <
                 &kp Y            &kp I        &kp O
 		&trans		 &kp H	      &kp J	      
-		&mo 3	         &trans	      &trans       
+		&mo 2	         &trans	      &trans       
 		//&bt BT_SEL 0 	 &bt BT_CLR   &trans
             >;
         };
