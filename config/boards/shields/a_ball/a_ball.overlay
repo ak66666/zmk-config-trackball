@@ -98,14 +98,14 @@
     /* base processor chain on all layers */
     /* input-processors = <&zip_xy_scaler 5 5>; */
 
-    /* layer-0 left left hand pointer */
+    /* layer-0 right left hand pointer */
     /* This default layer should not have any additional transformations. 
        All other layers will add to it, and then have all those extra steps removed
        when returned to the base layer.
     */
 
-    /* layer-1 right hand pointer */
-    right_hand_pointer: right_hand_pointer {
+    /* layer-1 left hand pointer */
+    left_hand_pointer: left_hand_pointer {
         layers           = <1>;
         input-processors = <
             &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction

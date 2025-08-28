@@ -39,27 +39,27 @@
 //					       RC(0,4)       
 //        >;
 // &mkp LCLK &mkp MCLK &mkp RCLK  &none
-        LEFT_HAND {
-            bindings = <
-                       &mkp RCLK &mkp MCLK  &none
-                  &none                          &none
-                                                    &mkp LCLK
-                		&mo 1 &bt BT_CLR
-						    &mo 2 
-            >;
-        };
-
-	// Right hand layer swaps the left and right buttons, and indicates to trakball_listener that it should swap X and Y axis (from those set by default.)
         RIGHT_HAND {
             bindings = <
                        &none&mkp MCLK &mkp RCLK
                   &none                          &none
                                                     &mo 2
-                		&trans &bt BT_CLR
+                		&mo 1 &bt BT_CLR
 						    &mkp LCLK 
             >;
         };
-	
+
+	// Left hand layer swaps the left and right buttons, and indicates to trakball_listener that it should swap X and Y axis (from those set by default.)
+        LEFT_HAND {
+            bindings = <
+                       &mkp RCLK &mkp MCLK  &none
+                  &none                          &none
+                                                    &mkp LCLK
+                		&trans &bt BT_CLR
+						    &mo 2 
+            >;
+        };
+
 	// Scroll layers do nothing by themselves, but indicate to trackball_listener that it should apply the appropriate transformation, i.e. switch to scrolling instead of pointing.
 	// For that reason it is completely transparent.
         EITHER_HAND_SCROLL {
