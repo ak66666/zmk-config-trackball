@@ -31,3 +31,12 @@ When the scrolling layer #3 was activated - it was not reached without "process-
 I think I can remove the extra layer, just keep the common shared scrolling layer now.
 Its sole purpose is to turn the scrolling on, no key modifications.
 
+
+
+20250828 1339
+
+Yesterday I received and assembled PCBs - after some tweaking it works.
+There were two obstacles:
+- the 3610 not starting up in time, had to increase the delay from 1s to 2s.
+- the sensor lens was too close to the ball, adjusted its location.
+The rest of the code was the same as in the mock-up.

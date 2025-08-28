@@ -24,31 +24,49 @@
 / {
     keymap {
         compatible = "zmk,keymap";
-
+// Map is not exactly a 3x3 matrix, close enough to treat it like that:
+//         map = <
+// Row 0:
+//	               RC(0,0) RC(0,1) RC(0,2) 
+// Row 1:
+//                   RC(0,6)                 RC(0,5) 
+//
+//                                             RC(0,3) 
+//
+// Row 2:
+//                              RC(0,7) RC(0,8)   
+//
+//					       RC(0,4)       
+//        >;
+// &mkp LCLK &mkp MCLK &mkp RCLK  &none
         LEFT_HAND {
             bindings = <
-                &kp Q            &kp W        &kp E
-		&mo 1		 &kp S	      &kp D
-		&mo 2	         &trans       &trans
+                       &mkp RCLK &mkp MCLK  &none
+                  &none                          &none
+                                                    &mkp LCLK
+                		&mo 1 &bt BT_CLR
+						    &mo 2 
             >;
         };
 
 	// Right hand layer swaps the left and right buttons, and indicates to trakball_listener that it should swap X and Y axis (from those set by default.)
         RIGHT_HAND {
             bindings = <
-                &kp Y            &kp I        &kp O
-		&trans		 &kp H	      &kp J	      
-		&mo 2	         &trans	      &trans       
-		//&bt BT_SEL 0 	 &bt BT_CLR   &trans
+                       &none&mkp MCLK &mkp RCLK
+                  &none                          &none
+                                                    &mo 2
+                		&trans &bt BT_CLR
+						    &mkp LCLK 
             >;
         };
 	
 	// Scroll layers do nothing by themselves, but indicate to trackball_listener that it should apply the appropriate transformation, i.e. switch to scrolling instead of pointing.
+	// For that reason it is completely transparent.
         EITHER_HAND_SCROLL {
             bindings = <
 		&trans	&trans	&trans
 		&trans	&trans	&trans
-		&trans	&trans	&kp Z
+		&trans	&trans	&trans
             >;
         };
 
