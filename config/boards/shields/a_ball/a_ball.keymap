@@ -10,7 +10,9 @@
 //#include <input/processors.dtsi>
 
 
-#define DEFAULT 0
+#define RIGHT_HAND 0
+#define LEFT_HAND 1
+#define EITHER_HAND_SCROLL 2
 
 // Mouse speed increased
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1000  // default: 600
@@ -41,7 +43,7 @@
 // &mkp LCLK &mkp MCLK &mkp RCLK  &none
         RIGHT_HAND {
             bindings = <
-                       &none&mkp MCLK &mkp RCLK
+                       &none &mo EITHER_HAND_SCROLL &mkp RCLK
                   &none                          &none
                                                     &mo 2
                 		&mo 1 &bt BT_CLR
@@ -52,7 +54,7 @@
 	// Left hand layer swaps the left and right buttons, and indicates to trakball_listener that it should swap X and Y axis (from those set by default.)
         LEFT_HAND {
             bindings = <
-                       &mkp RCLK &mkp MCLK  &none
+                       &mkp RCLK &mo EITHER_HAND_SCROLL &none
                   &none                          &none
                                                     &mkp LCLK
                 		&trans &bt BT_CLR
