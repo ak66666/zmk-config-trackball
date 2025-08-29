@@ -97,7 +97,7 @@
     device = <&trackball>;
     /* base processor chain on all layers */
     /* input-processors = <&zip_xy_scaler 5 5>; */
-    input-processors = <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>; // Inverts the pointer direction
+//    input-processors = <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>; // Inverts the pointer direction
 
     /* layer-0 right left hand pointer */
     /* This default layer should not have any additional transformations. 
