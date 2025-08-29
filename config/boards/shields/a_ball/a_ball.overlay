@@ -97,6 +97,7 @@
     device = <&trackball>;
     /* base processor chain on all layers */
     /* input-processors = <&zip_xy_scaler 5 5>; */
+    &zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction
 
     /* layer-0 right left hand pointer */
     /* This default layer should not have any additional transformations. 
@@ -109,7 +110,7 @@
         layers           = <1>;
         input-processors = <
             &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction
-            &zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction
+            &zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction, from the default inversion..
         >;
 	process-next; // To process the scroller layer, if/when it is activated. Without this command the processing would stop here.
     };
