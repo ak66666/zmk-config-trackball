@@ -4,8 +4,9 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: badjeff
       url-base: https://github.com/badjeff
-    # Additional modules containing boards/shields/custom code can be listed here as well
-    # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
+    - name: nuovotaka
+      url-base: https://github.com/nuovotaka
+
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -14,6 +15,9 @@ manifest:
     - name: zmk-pmw3610-driver
       remote: badjeff
       revision: main
+    - name: zmk-pointing-acceleration-alpha
+      remote: nuovotaka
+      revision: main
+
   self:
     path: config
-
