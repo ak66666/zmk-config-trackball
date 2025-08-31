@@ -1,6 +1,6 @@
 if SHIELD_TUBALL_DONGLE || SHIELD_TUBALL_LEFT || SHIELD_TUBALL_RIGHT
 config ZMK_SPLIT
-	default y
+    default y
 config ZMK_POINTING
     default y
 endif
