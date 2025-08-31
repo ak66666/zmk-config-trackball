@@ -53,7 +53,7 @@
         LEFT_HAND {
             bindings = <
                        &mkp RCLK &mo EITHER_HAND_SCROLL &none
-                  &none                          &none
+                  &studio_unlock                          &studio_unlock
                                                     &mkp LCLK
                 		&trans &bt BT_CLR
 						    &mo 2 
