@@ -1,18 +1,18 @@
-if SHIELD_COSMOS_DONGLE || SHIELD_COSMOS_LEFT || SHIELD_COSMOS_RIGHT
+if SHIELD_TUBALL_DONGLE || SHIELD_TUBALL_LEFT || SHIELD_TUBALL_RIGHT
 config ZMK_SPLIT
 	default y
 config ZMK_POINTING
     default y
 endif
 
-if SHIELD_COSMOS_DONGLE
+if SHIELD_TUBALL_DONGLE
 config ZMK_KEYBOARD_NAME
-	default "Kai Cosmos"
+	default "ThumbsUp! Trackball"
 config ZMK_SPLIT_ROLE_CENTRAL
 	default y
 endif
 
-if SHIELD_COSMOS_RIGHT
+if SHIELD_TUBALL_RIGHT
 config SPI
     default y
 endif
