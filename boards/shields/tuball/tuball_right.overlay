@@ -4,9 +4,9 @@
 #include "tuball-layouts.dtsi"
 #include <dt-bindings/zmk/input_transform.h>
 
-//&default_transform {
-//	col-offset = <5>;
-//};
+&default_transform {
+	col-offset = <5>;
+};
 
 &spi0 {
     status = "okay";
@@ -20,7 +20,6 @@
 	chosen {
 		zmk,kscan = &kscan0;
 	};
-
         kscan0: kscan {
             compatible = "zmk,kscan-gpio-direct";
             wakeup-source;
@@ -36,4 +35,7 @@
                 , <&pro_micro 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
                 ;
         };
+
+
+
 };

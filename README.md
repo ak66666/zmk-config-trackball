@@ -1,6 +1,10 @@
-# Kai Cosmos, now with dongle!
+# ThumbsUp! Trackball, now with dongle!
 
-![PXL_20250728_055040921~2](https://github.com/user-attachments/assets/8fa0792a-99ce-4186-a578-757c4baacf57)
+Borrowed the code from https://github.com/kaihchang/zmk-config-kai-cosmos-dongle
+Adjusted the MCU pin and keymap to ThumbsUp! trackball v2.
+
+Does not work as of today though...
+
 
 What's good about ZMK dongles?<br/>
 - Almost immediate connection and wake-up from sleep mode.<br/>
