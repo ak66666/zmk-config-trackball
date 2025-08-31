@@ -1,0 +1,10 @@
+# No whitespace after the comma or in your part name!
+
+config SHIELD_A_BALL_D_LEFT
+    def_bool $(shields_list_contains,a_ball_d_left)
+
+config SHIELD_A_BALL_D_RIGHT
+    def_bool $(shields_list_contains,a_ball_d_right)
+
+config SHIELD_A_BALL_D_DONGLE
+	def_bool $(shields_list_contains,a_ball_d_dongle)
