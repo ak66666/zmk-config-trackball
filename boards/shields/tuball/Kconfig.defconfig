@@ -7,7 +7,7 @@ endif
 
 if SHIELD_TUBALL_DONGLE
 config ZMK_KEYBOARD_NAME
-	default "ThumbsUp! Trackball"
+	default "Trackball"
 config ZMK_SPLIT_ROLE_CENTRAL
 	default y
 endif

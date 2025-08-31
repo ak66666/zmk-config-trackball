@@ -4,9 +4,9 @@
 #include "tuball-layouts.dtsi"
 #include <dt-bindings/zmk/input_transform.h>
 
-&default_transform {
-	col-offset = <5>;
-};
+//&default_transform {
+//	col-offset = <5>;
+//};
 
 &spi0 {
     status = "okay";
