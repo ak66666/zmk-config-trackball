@@ -8,5 +8,5 @@ features:
   - pointer
   - dongle
 siblings:
-  - a_ball_d_right
-  - a_ball_d_dongle
+  - a_ball_d_r
+  - a_ball_d_d

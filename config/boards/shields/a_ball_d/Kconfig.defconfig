@@ -1,11 +1,11 @@
-if SHIELD_A_BALL_D|| SHIELD_A_BALL_D_LEFT || SHIELD_A_BALL_D_RIGHT
+if SHIELD_A_BALL_D_D|| SHIELD_A_BALL_D_L|| SHIELD_A_BALL_D_R
 config ZMK_SPLIT
 	default y
 config ZMK_POINTING
     default y
 endif
 
-if SHIELD_A_BALL_D_DONGLE
+if SHIELD_A_BALL_D_D
 config ZMK_KEYBOARD_NAME
 	default "ThumbsUp! Trackball"
 config ZMK_SPLIT_ROLE_CENTRAL
@@ -24,7 +24,7 @@ config BT_MAX_PAIRED
     default 6
 endif
 
-if SHIELD_A_BALL_D_RIGHT
+if SHIELD_A_BALL_D_R
 config SPI
     default y
 endif
