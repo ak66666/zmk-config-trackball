@@ -1,251 +1,78 @@
-/*
-    No chosen zmk,matrix-transform here if using ZMK stuidio.
-    https://zmk.dev/docs/features/studio#adding-zmk-studio-support-to-a-keyboard
-
-    Put trackball listener here and place input-processors inside!
-*/
-
-#include <input/processors.dtsi>
-#include <dt-bindings/zmk/mouse.h>
-#include <dt-bindings/zmk/input_transform.h>
-#include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/bt.h>
+//#include <dt-bindings/zmk/mouse.h>
 
-// keep all behavior settings for zmk studio
-#define ZMK_BEHAVIORS_OMIT_KT
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/ext_power.h>
+//#include <behaviors/mouse_keys.dtsi>
+//#include <input/processors.dtsi>
 
-// layers
 
-#define BASE 0
-#define NUM 1
-#define SYM 2
-#define NAV 3
-#define MOUSE 4
-#define SCROLL 5
-#define GAME 6
-#define COMBO_REQUIRE_DELAY 100
+#define RIGHT_HAND 0
+#define LEFT_HAND 1
+#define EITHER_HAND_SCROLL 2
 
-&mt {
-    flavor = "balanced";
-    tapping-term-ms = <200>;
+// Mouse speed increased
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1000  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 15    // default: 10
+//#include <dt-bindings/zmk/pointing.h>
 
-    // flavor = "tap-preferred";
-    // tapping-term-ms = <170>;
-};
-
-&sk { quick-release; };
-
-&sl { release-after-ms = <1500>; };
+// #define LEFT_HAND     	0
+// #define RIGHT_HAND     	1
+// #define EITHER_HAND_SCROLL	2
 
 / {
-    behaviors {
-        holdtap_comma: holdtap_comma {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            hold-trigger-key-positions = <27>;
-            flavor = "hold-preferred";
-        };
-
-        holdtap_period: holdtap_period {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            hold-trigger-key-positions = <28>;
-        };
-
-        holdtap_equal_enter: holdtap_equal_enter {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            hold-trigger-key-positions = <9>;
-        };
-    };
-
-    combos {
-        compatible = "zmk,combos";
-
-        combo_esc {
-            timeout-ms = <50>;
-            key-positions = <0 1>;
-            bindings = <&kp ESC>;
-        };
-
-        combo_tab {
-            timeout-ms = <50>;
-            key-positions = <21 22>;
-            bindings = <&kp TAB>;
-        };
-
-        combo_return {
-            timeout-ms = <50>;
-            key-positions = <27 28>;
-            bindings = <&kp RETURN>;
-        };
-
-        combo_manager {
-            timeout-ms = <50>;
-            key-positions = <0 2>;
-            require-prior-idle-ms = <COMBO_REQUIRE_DELAY>;
-            bindings = <&kp LS(LC(ESCAPE))>;
-        };
-
-        combo_highlight {
-            timeout-ms = <50>;
-            key-positions = <16 19>;
-            bindings = <&highlight_macro>;
-        };
-
-        combo_toggle1 {
-            bindings = <&tog 1>;
-            key-positions = <32 33>;
-            layers = <0 1 2 3>;
-        };
-
-        combo_toggle3 {
-            bindings = <&tog 3>;
-            key-positions = <36 37>;
-            layers = <0 1 2 3>;
-        };
-
-        combo_backspace_1 {
-            bindings = <&kp BACKSPACE>;
-            key-positions = <11 12>;
-            require-prior-idle-ms = <COMBO_REQUIRE_DELAY>;
-            timeout-ms = <30>;
-            layers = <0 1 2 3>;
-        };
-
-        combo_delete_2 {
-            bindings = <&kp DELETE>;
-            key-positions = <12 13>;
-            require-prior-idle-ms = <COMBO_REQUIRE_DELAY>;
-            timeout-ms = <30>;
-            layers = <0 1 2 3>;
-        };
-
-        combo_backspace_2 {
-            bindings = <&kp BACKSPACE>;
-            key-positions = <16 17>;
-            require-prior-idle-ms = <COMBO_REQUIRE_DELAY>;
-            layers = <0 1 2 3>;
-            timeout-ms = <30>;
-        };
-
-        combo_delete_1 {
-            bindings = <&kp DELETE>;
-            key-positions = <17 18>;
-            require-prior-idle-ms = <COMBO_REQUIRE_DELAY>;
-            layers = <0 1 2 3>;
-            timeout-ms = <30>;
-        };
-
-        combo_copy {
-            bindings = <&kp LC(C)>;
-            key-positions = <22 23>;
-            require-prior-idle-ms = <COMBO_REQUIRE_DELAY>;
-            layers = <0 1 2 3>;
-        };
-    };
-
-    macros {
-        cnq_macro: cnq_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp GRAVE &kp LBKT &kp GRAVE &kp RIGHT_BRACKET &kp LEFT_ARROW &kp LEFT_ARROW &kp DOWN_ARROW &kp DOWN_ARROW &kp ENTER>;
-        };
-
-        highlight_macro: highlight_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp HOME &kp LS(END)>;
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
-
-        _BASE {
-            display-name = "Base";
+// Map is not exactly a 3x3 matrix, close enough to treat it like that:
+//         map = <
+// Row 0:
+//	               RC(0,0) RC(0,1) RC(0,2) 
+// Row 1:
+//                   RC(0,6)                 RC(0,5) 
+//
+//                                             RC(0,3) 
+//
+// Row 2:
+//                              RC(0,7) RC(0,8)   
+//
+//					       RC(0,4)       
+//        >;
+// &mkp LCLK &mkp MCLK &mkp RCLK  &none
+        RIGHT_HAND {
             bindings = <
-&kp Q           &kp W           &kp E               &kp R        &kp T                     &kp Y        &kp U  &kp I                               &kp O                              &kp P
-&mt LEFT_GUI A  &mt LEFT_ALT S  &mt LEFT_CONTROL D  &kp F        &kp G                     &kp H        &kp J  &mt RIGHT_CONTROL K                 &mt RIGHT_ALT L                    &mt RIGHT_GUI SQT
-&kp Z           &kp X           &kp C               &kp V        &kp B                     &kp N        &kp M  &holdtap_comma LA(LC(COMMA)) COMMA  &holdtap_period LG(PERIOD) PERIOD  &kp FSLH
-                &kp LC(Z)       &kp LC(Y)           &lt 1 ENTER  &kp LSHIFT  &to 4  &to 4  &lt 3 SPACE  &mo 2  &msc SCRL_UP                        &msc SCRL_DOWN
+                       &none &mo EITHER_HAND_SCROLL &mkp RCLK
+                  &none                          &none
+                                                    &mo 2
+                		&mo 1 &bt BT_CLR
+						    &mkp LCLK 
             >;
         };
 
-        _NUM {
-            display-name = "Number";
+	// Left hand layer swaps the left and right buttons, and indicates to trakball_listener that it should swap X and Y axis (from those set by default.)
+        LEFT_HAND {
             bindings = <
-&kp C_PLAY_PAUSE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP   &mkp MB4         &mkp MB5                               &kp BACKSPACE  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &holdtap_equal_enter ENTER EQUAL
-&sk LEFT_META     &sk LEFT_ALT       &sk LEFT_CONTROL  &sk LEFT_SHIFT   &to 6                                  &kp MINUS      &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp ASTERISK
-&kp LA(TAB)       &kp LA(F4)         &kp LS(LG(S))     &kp LC(PAGE_UP)  &kp LC(PAGE_DOWN)                      &kp PLUS       &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp FSLH
-                  &trans             &trans            &to 0            &kp LG(TAB)        &kp ENTER  &kp ESC  &kp NUMBER_0   &kp DOT       &kp LS(TAB)   &kp TAB
+                       &mkp RCLK &mo EITHER_HAND_SCROLL &none
+                  &none                          &none
+                                                    &mkp LCLK
+                		&trans &bt BT_CLR
+						    &mo 2 
             >;
         };
 
-        _SYM {
-            display-name = "Symbol";
+	// Scroll layers do nothing by themselves, but indicate to trackball_listener that it should apply the appropriate transformation, i.e. switch to scrolling instead of pointing.
+	// For that reason it is completely transparent.
+        EITHER_HAND_SCROLL {
             bindings = <
-&kp GRAVE        &kp LEFT_BRACKET   &kp LEFT_PARENTHESIS   &kp LEFT_BRACE   &kp LC(EXCLAMATION)                  &kp TILDE  &kp PIPE        &kp AMPERSAND  &cnq_macro        &kp EQUAL
-&kp EXCLAMATION  &kp AT_SIGN        &kp HASH               &kp DOLLAR       &kp PERCENT                          &kp MINUS  &kp LESS_THAN   &kp CARET      &kp GREATER_THAN  &kp ASTERISK
-&kp BACKSLASH    &kp RIGHT_BRACKET  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE  &kp LS(LC(SLASH))                    &kp PLUS   &kp UNDERSCORE  &kp SEMICOLON  &kp COLON         &kp QUESTION
-                 &trans             &trans                 &to 0            &trans               &trans  &trans  &trans     &trans          &trans         &trans
+		&trans	&trans	&trans
+		&trans	&trans	&trans
+		&trans	&trans	&trans
             >;
         };
 
-        _NAV {
-            display-name = "Navigation";
-            bindings = <
-&bt BT_CLR  &bt BT_PRV  &bt BT_NXT  &kp F11  &kp F12                  &mkp MB4         &mkp MB5           &kp C_VOLUME_UP  &kp C_VOLUME_DOWN  &kp C_PLAY_PAUSE
-&kp F6      &kp F7      &kp F8      &kp F9   &kp F10                  &kp HOME         &kp LEFT           &kp UP           &kp RIGHT          &kp END
-&kp F1      &kp F2      &kp F3      &kp F4   &kp F5                   &kp LC(PAGE_UP)  &kp LC(PAGE_DOWN)  &kp DOWN         &kp PAGE_UP        &kp PAGE_DOWN
-            &trans      &trans      &to 0    &trans   &trans  &trans  &trans           &trans             &trans           &trans
-            >;
-        };
 
-        _MOUSE {
-            display-name = "Mouse";
-            bindings = <
-&kp C_PLAY_PAUSE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &mkp MB4         &mkp MB5                                       &mkp MB1  &mkp MB2  &mkp MB3         &none              &to 0
-&kp ENTER         &to 5              &mkp MB1         &mkp MB2         &kp DEL                                        &mkp MB2  &to 5     &to 5            &none              &none
-&kp LC(X)         &kp LA(F4)         &mkp MB3         &kp LC(PAGE_UP)  &kp LC(PAGE_DOWN)                              &mkp MB3  &to 5     &to 5            &none              &none
-                  &kp LC(C)          &kp LC(V)        &to 0            &kp LSHIFT         &kp LEFT_CONTROL  &mkp MB1  &to 5     &to 0     &kp LC(PAGE_UP)  &kp LC(PAGE_DOWN)
-            >;
-        };
-
-        _SCROLL {
-            display-name = "Scroll";
-            bindings = <
-&kp C_PLAY_PAUSE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &mkp MB4         &mkp MB5                                       &mkp MB1  &mkp MB2  &mkp MB3         &none              &to 0
-&kp ENTER         &to 4              &mkp MB1         &mkp MB2         &kp DEL                                        &mkp MB2  &to 4     &to 4            &none              &none
-&kp LC(X)         &kp LA(F4)         &mkp MB3         &kp LC(PAGE_UP)  &kp LC(PAGE_DOWN)                              &mkp MB3  &to 4     &to 4            &none              &bootloader
-                  &kp LC(C)          &kp LC(V)        &to 0            &kp LSHIFT         &kp LEFT_CONTROL  &mkp MB1  &to 4     &to 0     &kp LC(PAGE_UP)  &kp LC(PAGE_DOWN)
-            >;
-        };
-
-        _GAME {
-            display-name = "Game";
-            bindings = <
-&kp Q    &kp W  &kp E  &kp R    &kp T                             &to 0  &kp U     &kp C_VOLUME_UP  &kp C_VOLUME_DOWN  &kp F12
-&kp TAB  &kp A  &kp W  &kp D    &kp G                             &kp H  &kp LEFT  &kp UP           &kp RIGHT          &kp LSHIFT
-&kp Z    &kp X  &kp S  &kp V    &kp B                             &kp N  &kp M     &kp DOWN         &kp TAB            &studio_unlock
-         &kp F  &kp C  &kp ESC  &kp SPACE  &kp LEFT_SHIFT  &kp X  &kp Z  &to 0     &kp ENTER        &kp ESC
-            >;
-        };
-
-        _EXTRA1 { status = "reserved"; };
-
-        _EXTRA2 { status = "reserved"; };
     };
+
 };
