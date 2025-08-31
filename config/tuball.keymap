@@ -82,6 +82,13 @@
             >;
         };
 
+        _EXTRA1 { status = "reserved"; };
+        _EXTRA2 { status = "reserved"; };
+        _EXTRA3 { status = "reserved"; };
+        _EXTRA4 { status = "reserved"; };
+        _EXTRA5 { status = "reserved"; };
+        _EXTRA6 { status = "reserved"; };
+        _EXTRA7 { status = "reserved"; };
 
     };
 
