@@ -33,7 +33,7 @@
 
 &trackball_split_listener { // local trackball input split device child node, receiving events from the peripheral and raising them locally
     status = "okay";
-    input-processors = <&pointer_accel>;
+    //input-processors = <&pointer_accel>;
 
     /* layer-0 right left hand pointer */
     /* This default layer should not have any additional transformations. 
