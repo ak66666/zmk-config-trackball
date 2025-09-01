@@ -53,20 +53,20 @@
 // &mkp LCLK &mkp MCLK &mkp RCLK  &none
         RIGHT_HAND {
             bindings = <
-                       &none &mo EITHER_HAND_SCROLL          &kp R
-                  &studio_unlock                          &studio_unlock
+                       &none &mo EITHER_HAND_SCROLL &mkp RCLK
+                  &none                          &none
                                                     &mo 2
                 		&mo 1 &bt BT_CLR
-						    &kp T 
+						    &mkp LCLK 
             >;
         };
 
 	// Left hand layer swaps the left and right buttons, and indicates to trakball_listener that it should swap X and Y axis (from those set by default.)
         LEFT_HAND {
             bindings = <
-                       &kp A &mo EITHER_HAND_SCROLL &none
-                  &studio_unlock                          &studio_unlock
-                                                    &kp B
+                       &mkp RCLK &mo EITHER_HAND_SCROLL &none
+                  &none                          &none
+                                                    &mkp LCLK
                 		&trans &bt BT_CLR
 						    &mo 2 
             >;

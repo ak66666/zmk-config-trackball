@@ -3,7 +3,12 @@
 Borrowed the code from https://github.com/kaihchang/zmk-config-kai-cosmos-dongle
 Adjusted the MCU pin and keymap to ThumbsUp! trackball v2.
 
-Does not work as of today though...
+
+Right now I am locking it for the left-hand usage:
+The next version will use a slider switch for the device orientation and hand used.
+The current approach with the layers and input processors has an issue -whenever the key is pressed the ball direction is returned back to the default right-hand settings. 
+
+From kai-cosmos:
 
 
 What's good about ZMK dongles?<br/>
