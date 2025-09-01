@@ -32,16 +32,36 @@
 /* More about input processors: https://zmk.dev/docs/keymaps/input-processors#input-processors-overview */
 
 &trackball_split_listener { // local trackball input split device child node, receiving events from the peripheral and raising them locally
-	status = "okay";
-    	input-processors = 
-		    <&pointer_accel>;
-	scroll {
-		layers = <5>; // SCROLL
-		input-processors =
-            <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
-            <&zip_xy_scaler 1 16>,
-            <&zip_xy_to_scroll_mapper>;
-	};
+    status = "okay";
+    input-processors = <&pointer_accel>;
+
+    /* layer-0 right left hand pointer */
+    /* This default layer should not have any additional transformations. 
+       All other layers will add to it, and then have all those extra steps removed
+       when returned to the base layer.
+    */
+
+    /* layer-1 left hand pointer */
+    left_hand_pointer: left_hand_pointer {
+        layers           = <1>;
+        input-processors = <
+            &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction
+	   // The regular scrolling assumes the scroling wheel, which is not used here, so &zip_scroll_transform is not applicable and does not work.
+	   // &zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction, from the default inversion..
+        >;
+	process-next; // To process the scroller layer, if/when it is activated. Without this command the processing would stop here.
+    };
+
+    /* layer-2 both hand scroll override */
+    either_hand_scroller: either_hand_scroller {
+        layers           = <2>;
+        input-processors = <
+            &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) // Inverts the pointer direction.
+            &zip_xy_scaler 1 15                              // Scales the scroll speed
+            &zip_xy_to_scroll_mapper                         // Converts XY movement to scroll events
+        >;
+    };
+
 };
 
 / {
